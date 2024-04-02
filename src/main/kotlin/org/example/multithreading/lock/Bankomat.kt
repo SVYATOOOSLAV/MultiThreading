@@ -1,4 +1,4 @@
-package org.example.multithreading
+package org.example.multithreading.lock
 
 import java.util.concurrent.locks.Lock
 import java.util.concurrent.locks.ReentrantLock

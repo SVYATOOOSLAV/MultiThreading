@@ -1,4 +1,4 @@
-package org.example.multithreading
+package org.example.multithreading.lock
 
 import java.lang.Exception
 import java.util.concurrent.locks.Lock

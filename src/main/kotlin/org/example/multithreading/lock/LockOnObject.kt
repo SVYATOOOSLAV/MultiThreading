@@ -1,4 +1,4 @@
-package org.example.multithreading
+package org.example.multithreading.lock
 
 
 class ExCall{
