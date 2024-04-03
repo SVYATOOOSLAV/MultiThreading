@@ -1,4 +1,4 @@
-package org.example.multithreading
+package org.example.multithreading.synchronizers
 
 import java.util.concurrent.Semaphore
 
