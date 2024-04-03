@@ -15,6 +15,7 @@ class Factorial2(private var f: Int) : Callable<Int> {
         var result: Int = 1
         for (i in 1..f) {
             result *= i
+            Thread.sleep(1000)
         }
         return result
     }
@@ -28,11 +29,21 @@ class CallableFactorial() {
 
 
 fun main() {
+
+    // классы импл Runnable можно использовать в Thread и Excutor Service
+    // классы импл Callable только в Executor Service
+
     val executorService = Executors.newSingleThreadExecutor()
-    val factorial: Factorial2 = Factorial2(3)
-    val future: Future<Int> = executorService.submit(factorial) // submit необходим для того, чтобы возвращать значения
+    val factorial: Factorial2 = Factorial2(5)
+    val future: Future<Int> = executorService.submit(factorial)
+    // submit необходим для того, чтобы возвращать значения
+    // во future возможно, что еще нет никакого результата (смотри ниже)
     try {
-        CallableFactorial.factorialRes = future.get()
+        println(future.isDone)
+        println("Try to get result")
+        CallableFactorial.factorialRes = future.get() // при вызове get() поток main остановится до окончания работы задачи и получения результата
+        println("Get a result")
+        println(future.isDone)
     } catch (e: ExecutionException) {
         println(e.cause)
     } finally {
