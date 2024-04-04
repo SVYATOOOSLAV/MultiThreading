@@ -1,0 +1,1 @@
+Всегда оборачивай Thread.sleep() в try catch (ошибка InterruptedException)
